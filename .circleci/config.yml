@@ -12,6 +12,7 @@ jobs:
             apt-get update -qq -y
             apt-get install -qq -y
             apt-get -y install sudo
+            apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y tzdata
             sudo apt-get install apt-transport-https ca-certificates curl gnupg -y
             sudo apt-get install awscli -y
             sudo apt-get update
@@ -35,3 +36,9 @@ workflows:
   default:
     jobs:
       - dockerfun
+
+
+
+
+
+      # apt-transport-https ca-certificates
