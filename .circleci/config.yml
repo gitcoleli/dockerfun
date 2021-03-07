@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@0.0.4
+  aws-ecr: circleci/aws-ecr@6.15.3
 
 workflows:
   build_test_deploy:
@@ -20,7 +20,7 @@ workflows:
 jobs:
   build_test:
     docker:
-      - image: circleci/python:2.7.14
+      - image: circleci/python:3.9-alpine
     steps:
       - checkout
       - run:
@@ -36,7 +36,7 @@ jobs:
             python test_hello_world.py
   docker_hub_build_push_image:
     docker:
-      - image: circleci/python:2.7.14
+      - image: circleci/python:3.9-alpine
     steps:
       - checkout
       - setup_remote_docker:
