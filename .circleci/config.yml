@@ -28,6 +28,9 @@ jobs:
           name: build image
           command: |
             docker build -t number5 .
+            docker image ls
+            aws s3 ls
+            aws ecr get-login-password
 
 
 workflows:
