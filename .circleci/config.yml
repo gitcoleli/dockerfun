@@ -11,6 +11,7 @@ jobs:
           command: |
             apt-get update -qq -y
             apt-get install -qq -y
+            apt-get -y install sudo
             sudo apt-get install apt-transport-https ca-certificates curl gnupg -y
             sudo apt-get install awscli -y
             sudo apt-get update
