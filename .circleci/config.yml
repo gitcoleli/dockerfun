@@ -20,7 +20,7 @@ workflows:
 jobs:
   build_test:
     docker:
-      - image: circleci/python:3.9-alpine
+      - image: python:3.9-alpine
     steps:
       - checkout
       - run:
@@ -36,7 +36,7 @@ jobs:
             python test_hello_world.py
   docker_hub_build_push_image:
     docker:
-      - image: circleci/python:3.9-alpine
+      - image: python:3.9-alpine
     steps:
       - checkout
       - setup_remote_docker:
