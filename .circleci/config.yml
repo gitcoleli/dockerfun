@@ -33,9 +33,9 @@ jobs:
             docker image ls
             aws s3 ls
             aws ecr get-login-password
-            aws ecr-public get-login-password --region us-east-1 
-            docker tag number5:latest public.ecr.aws/r3i6g3s9/number5:latest
-            docker push public.ecr.aws/r3i6g3s9/number5:latest
+            aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 962906402563.dkr.ecr.us-west-2.amazonaws.com 
+            docker tag number5:latest 962906402563.dkr.ecr.us-west-2.amazonaws.com/number5:latest
+            docker push 962906402563.dkr.ecr.us-west-2.amazonaws.com/number5:latest
 
 
 workflows:
