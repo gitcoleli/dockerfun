@@ -5,7 +5,7 @@ version: 2.1
 jobs:
   dockerfun:
     docker:
-      - image: ubuntu:20.04
+      - image: ubuntu:18.04
     steps:
       - checkout
       - run:
@@ -14,28 +14,11 @@ jobs:
             apt-get update -qq -y
             apt-get install -qq -y
             apt-get -y install sudo
-            apt-get update && DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y tzdata
-            sudo apt-get install apt-transport-https ca-certificates curl gnupg -y
-            sudo apt-get install awscli -y
-            sudo apt-get update
-            curl -fsSL https://get.docker.com -o get-docker.sh
-            sudo sh get-docker.sh
+            ./update.sh
+            cat deployment.yml
 
-      # Required for using docker commands in CircleCI
-      - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: false
 
-      - run:
-          name: build image
-          command: |
-            docker build -t number5 .
-            docker image ls
-            aws s3 ls
-            aws ecr get-login-password
-            aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 962906402563.dkr.ecr.us-west-2.amazonaws.com 
-            docker tag number5:latest 962906402563.dkr.ecr.us-west-2.amazonaws.com/number5:latest
-            docker push 962906402563.dkr.ecr.us-west-2.amazonaws.com/number5:latest
+
 
 
 workflows:
@@ -47,4 +30,3 @@ workflows:
 
 
 
-#       # apt-transport-https ca-certificates######
