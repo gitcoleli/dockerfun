@@ -14,7 +14,8 @@ jobs:
             apt-get update -qq -y
             apt-get install -qq -y
             apt-get -y install sudo
-            sudo ./update.sh
+            chmod 755 update.sh
+            ./update.sh
             cat deployment.yml
 
 
