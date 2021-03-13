@@ -14,6 +14,7 @@ jobs:
             chmod 755 update.sh
             ./update.sh
             cat deployment.yml
+            cat deployment2.yml
 
 
 

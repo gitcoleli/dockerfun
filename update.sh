@@ -1,5 +1,6 @@
-SEARCH="962906402563.dkr.ecr.us-west-2.amazonaws.com/number5:v0.1.xxx"
-REPLACE="962906402563.dkr.ecr.us-west-2.amazonaws.com/number5:v0.1.${CIRCLE_WORKFLOW_ID:0:8}"
+SEARCH="xxx"
 
-sed -i 's/$SEARCH/$REPLACE/g' deployment.yml
+REPLACE="${CIRCLE_BUILD_NUM}"
+
+cat deployment.yml | sed -e "s/$SEARCH/$REPLACE/" >> deployment2.yml
 
