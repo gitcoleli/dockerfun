@@ -17,6 +17,7 @@ jobs:
             chmod 755 update.sh
             ./update.sh
             cat deployment.yml
+            kubectl apply -f deployment.yml
 
 
 
